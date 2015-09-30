@@ -1,5 +1,5 @@
 # meteor-simple-todos
 Test project for playing with Meteor
 
-change1
+change2
 ...
