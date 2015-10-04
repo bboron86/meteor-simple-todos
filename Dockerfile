@@ -8,14 +8,14 @@ RUN apt-get update && \
   apt-get install -y nodejs
 
 # install mongodb
-RUN apt-get install -y mongodb
-RUN mkdir -p /data/db
+RUN apt-get install -y mongodb && \
+  mkdir -p /data/db
 VOLUME /data/db
 
 # install meteor
-RUN apt-get install -y git
-RUN apt-get install -y curl
-RUN curl https://install.meteor.com | /bin/sh
+RUN apt-get install -y git && \
+  apt-get install -y curl && \
+  curl https://install.meteor.com | /bin/sh
 
 # bundle meteor project
 RUN mkdir -p /home/meteor/
