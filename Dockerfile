@@ -18,17 +18,17 @@ RUN apt-get install -y git && \
   curl https://install.meteor.com | /bin/sh
 
 # bundle meteor project
-RUN mkdir -p /home/meteor/
-WORKDIR /home/meteor
-RUN git clone https://github.com/bboron86/meteor-simple-todos.git
-WORKDIR meteor-simple-todos
-RUN meteor build ../bundle
+RUN mkdir -p /home/meteor/ && \
+  cd /home/meteor && \
+  git clone https://github.com/bboron86/meteor-simple-todos.git && \
+  cd meteor-simple-todos && \
+  meteor build ../bundle
 
 # npm install server
-WORKDIR ../bundle
-RUN tar -zxvf meteor-simple-todos.tar.gz
-WORKDIR bundle/programs/server
-RUN npm install
+RUN cd ../bundle && \
+  tar -zxvf meteor-simple-todos.tar.gz && \
+  cd bundle/programs/server && \
+  npm install
 
 # set env parameters
 ENV PORT 80
