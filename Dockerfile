@@ -25,7 +25,7 @@ RUN mkdir -p /home/meteor/ && \
   meteor build ../bundle
 
 # npm install server
-RUN cd ../bundle && \
+RUN cd /home/meteor/bundle && \
   tar -zxvf meteor-simple-todos.tar.gz && \
   cd bundle/programs/server && \
   npm install
