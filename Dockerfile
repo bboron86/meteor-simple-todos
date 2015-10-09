@@ -17,11 +17,12 @@ RUN apt-get install -y git && \
   apt-get install -y curl && \
   curl https://install.meteor.com | /bin/sh
 
+# copy sources to the container (jenkins did the clone already)
+RUN mkdir -p /home/meteor/meteor-simple-todos
+COPY . /home/meteor/meteor-simple-todos
+
 # bundle meteor project
-RUN mkdir -p /home/meteor/ && \
-  cd /home/meteor && \
-  git clone https://github.com/bboron86/meteor-simple-todos.git && \
-  cd meteor-simple-todos && \
+RUN cd /home/meteor/meteor-simple-todos && \
   meteor build ../bundle
 
 # npm install server
