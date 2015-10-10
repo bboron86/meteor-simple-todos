@@ -7,11 +7,6 @@ RUN apt-get update && \
   apt-get update && \
   apt-get install -y nodejs
 
-# install mongodb
-RUN apt-get install -y mongodb && \
-  mkdir -p /data/db
-VOLUME /data/db
-
 # install meteor
 RUN apt-get install -y git && \
   apt-get install -y curl && \
@@ -31,9 +26,9 @@ RUN cd /home/meteor/bundle && \
   cd bundle/programs/server && \
   npm install
 
-# set env parameters
+# set env parameters (mogo = name of the linked mongodb container)
 ENV PORT 80
-ENV MONGO_URL mongodb://localhost:27017
+ENV MONGO_URL mongodb://mongo:27017
 ENV ROOT_URL http://ec2-52-29-32-82.eu-central-1.compute.amazonaws.com/
 
 # expose ports to host
