@@ -28,7 +28,7 @@ RUN cd /home/meteor/bundle && \
 
 # set env parameters (mogo = name of the linked mongodb container)
 ENV PORT 80
-ENV MONGO_URL mongodb://mongo:27017
+ENV MONGO_URL mongodb://mongo:27017/meteor
 ENV ROOT_URL http://ec2-52-29-32-82.eu-central-1.compute.amazonaws.com/
 
 # expose ports to host
